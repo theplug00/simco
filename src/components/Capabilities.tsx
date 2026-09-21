@@ -7,13 +7,13 @@ export default function Capabilities() {
   const current = SERVICES[active];
 
   return (
-    <section id="capabilities" className="relative scroll-mt-20 bg-charcoal-900 text-snow">
-      <div className="gridlines-light pointer-events-none absolute inset-0 opacity-40" />
+    <section id="capabilities" className="relative scroll-mt-20 bg-paper text-ink">
+      <div className="gridlines-light pointer-events-none absolute inset-0 opacity-60" />
       <div className="relative px-5 py-24 sm:px-8 lg:px-14 lg:py-32 xl:px-20">
         {/* header */}
         <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
           <div className="lg:col-span-7">
-            <Eyebrow index="01" dark>Capabilities</Eyebrow>
+            <Eyebrow index="01">Capabilities</Eyebrow>
             <Lines
               className="font-display mt-6 text-[clamp(2.4rem,5.4vw,4.6rem)] font-extrabold leading-[0.98] tracking-tight"
               lines={[
@@ -26,7 +26,7 @@ export default function Capabilities() {
             />
           </div>
           <div className="lg:col-span-4 lg:col-start-9">
-            <p className="text-base leading-relaxed text-mist">
+            <p className="text-base leading-relaxed text-graphite">
               Twelve disciplines under one contract — so the civils talk to the
               electricians, the electricians talk to the grid, and nothing falls
               between subcontractors.
@@ -42,7 +42,7 @@ export default function Capabilities() {
           {/* sticky crossfade visual */}
           <div className="hidden lg:col-span-5 lg:block">
             <div className="sticky top-28">
-              <div className="img-zoom relative aspect-[4/5] overflow-hidden rounded-lg border border-white/10 bg-charcoal-800">
+              <div className="img-zoom relative aspect-[4/5] overflow-hidden rounded-lg border border-ink/10 bg-mist">
                 {SERVICES.map((s, i) => (
                   <img
                     key={s.id}
@@ -54,7 +54,7 @@ export default function Capabilities() {
                     }`}
                   />
                 ))}
-                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-transparent" />
+                <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 flex items-end justify-between p-5">
                   <p className="font-display max-w-[75%] text-lg font-bold leading-tight text-snow">
                     {current.title}
@@ -78,23 +78,23 @@ export default function Capabilities() {
                 onMouseEnter={() => setActive(i)}
                 onFocus={() => setActive(i)}
                 onClick={() => setActive(i)}
-                className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-2 border-t border-white/10 px-4 py-5 text-left transition-colors duration-400 last:border-b hover:bg-charcoal-800 hover:text-snow sm:px-5"
+                className="group grid w-full grid-cols-[auto_1fr_auto] items-center gap-x-5 gap-y-2 border-t border-ink/10 px-4 py-5 text-left transition-colors duration-400 last:border-b hover:bg-mist hover:text-ink sm:px-5"
               >
-                <span className="font-mono text-[11px] tabular-nums text-cyan-600 transition-colors group-hover:text-cyan-400">
+                <span className="font-mono text-[11px] tabular-nums text-cyan-600 transition-colors group-hover:text-cyan-500">
                   {String(i + 1).padStart(2, "0")}
                 </span>
                 <span>
                   <span className="font-display block text-lg font-bold leading-snug sm:text-xl">
                     {s.title}
                   </span>
-                  <span className="mt-1 block max-w-lg text-sm leading-relaxed text-ash transition-colors duration-400 group-hover:text-mist">
+                  <span className="mt-1 block max-w-lg text-sm leading-relaxed text-graphite transition-colors duration-400 group-hover:text-ink">
                     {s.blurb}
                   </span>
                   <span className="mt-2.5 flex flex-wrap gap-1.5">
                     {s.tags.map((t) => (
                       <span
                         key={t}
-                        className="rounded-full border border-white/15 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-mist transition-colors duration-400 group-hover:border-cyan-500/40 group-hover:text-cyan-300"
+                        className="rounded-full border border-ink/12 px-2.5 py-0.5 font-mono text-[9px] uppercase tracking-[0.16em] text-ash transition-colors duration-400 group-hover:border-cyan-500/40 group-hover:text-cyan-600"
                       >
                         {t}
                       </span>

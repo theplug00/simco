@@ -25,9 +25,9 @@ export default function Footer() {
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <footer className="relative overflow-hidden border-t border-white/8 bg-charcoal-950 text-snow">
+    <footer className="relative overflow-hidden border-t border-ink/8 bg-ink text-snow">
       {/* outlined wordmark marquee */}
-      <div className="border-b border-white/8 py-6 opacity-80">
+      <div className="border-b border-snow/8 py-6 opacity-80">
         <Marquee
           items={["SIMCO RENEWABLES", "SOLAR · STORAGE · GRID"]}
           itemClassName="font-display outline-word text-[clamp(2.6rem,6vw,4.6rem)] font-extrabold uppercase leading-none"
@@ -41,22 +41,22 @@ export default function Footer() {
               <LogoMark className="h-10 w-10" />
               <span className="leading-none">
                 <span className="font-display block text-lg font-extrabold tracking-tight">SIMCO</span>
-                <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-mist">
+                <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-smoke">
                   Renewable Solutions
                 </span>
               </span>
             </div>
-            <p className="mt-5 max-w-xs text-sm leading-relaxed text-mist">
+            <p className="mt-5 max-w-xs text-sm leading-relaxed text-smoke">
               A London EPC &amp; O&amp;M contractor building the UK's renewable
               backbone — from first survey to final megawatt-hour.
             </p>
-            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-mist/70">
+            <p className="mt-6 font-mono text-[10px] uppercase tracking-[0.24em] text-smoke/70">
               {BRAND.coordinates}
             </p>
           </div>
 
           <div className="lg:col-span-2 lg:col-start-6">
-            <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-mist">Explore</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-smoke">Explore</p>
             <ul className="mt-5 space-y-2.5">
               {EXPLORE.map((l) => (
                 <li key={l.id}>
@@ -69,7 +69,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-mist">Disciplines</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-smoke">Disciplines</p>
             <ul className="mt-5 space-y-2.5">
               {SERVICES_SHORT.map((s) => (
                 <li key={s}>
@@ -82,7 +82,7 @@ export default function Footer() {
           </div>
 
           <div className="lg:col-span-3">
-            <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-mist">Sales desk</p>
+            <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-smoke">Sales desk</p>
             <ul className="mt-5 space-y-2.5 text-sm">
               <li>
                 <a href={`mailto:${BRAND.email}`} className="link-sweep break-all text-snow/85 hover:text-cyan-400">
@@ -94,11 +94,11 @@ export default function Footer() {
                   {BRAND.phoneDisplay}
                 </a>
               </li>
-              <li className="text-mist">{BRAND.city}</li>
+              <li className="text-smoke">{BRAND.city}</li>
             </ul>
             <button
               onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="group mt-8 flex items-center gap-2 rounded-full border border-white/15 px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-snow transition-all duration-300 hover:border-cyan-500 hover:text-cyan-400"
+              className="group mt-8 flex items-center gap-2 rounded-full border border-snow/15 px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-snow transition-all duration-300 hover:border-cyan-500 hover:text-cyan-400"
             >
               Back to top
               <svg viewBox="0 0 14 14" className="h-3 w-3 transition-transform duration-300 group-hover:-translate-y-0.5" fill="none">
@@ -108,7 +108,7 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="mt-14 flex flex-col gap-3 border-t border-white/8 pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-mist/70 sm:flex-row sm:items-center sm:justify-between">
+        <div className="mt-14 flex flex-col gap-3 border-t border-snow/8 pt-6 font-mono text-[10px] uppercase tracking-[0.18em] text-smoke/70 sm:flex-row sm:items-center sm:justify-between">
           <p>© 2026 {BRAND.legal} · Registered in England &amp; Wales</p>
           <p className="flex items-center gap-2">
             <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-green-400" />

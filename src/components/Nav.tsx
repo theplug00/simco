@@ -45,7 +45,7 @@ export default function Nav() {
       <header
         className={`fixed inset-x-0 top-0 z-[60] transition-all duration-500 ${
           scrolled
-            ? "glass-dark border-b border-white/10 py-2.5"
+            ? "glass-light border-b border-ink/5 py-2.5"
             : "border-b border-transparent bg-transparent py-4"
         }`}
       >
@@ -57,10 +57,10 @@ export default function Nav() {
           >
             <LogoMark className="h-9 w-9 transition-transform duration-500 group-hover:rotate-45" />
             <span className="leading-none">
-              <span className="font-display block text-[17px] font-extrabold tracking-tight text-snow">
+              <span className="font-display block text-[17px] font-extrabold tracking-tight text-ink">
                 SIMCO
               </span>
-              <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-mist">
+              <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-ash">
                 Renewables
               </span>
             </span>
@@ -72,7 +72,7 @@ export default function Nav() {
                 key={l.id}
                 onClick={() => go(l.id)}
                 className={`relative font-mono text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 ${
-                  active === l.id ? "text-cyan-400" : "text-mist hover:text-snow"
+                  active === l.id ? "text-cyan-600" : "text-graphite hover:text-ink"
                 }`}
               >
                 {l.label}
@@ -88,7 +88,7 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => go("contact")}
-              className="group hidden items-center gap-2 rounded-full bg-cyan-500 px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-charcoal-950 transition-all duration-300 hover:bg-cyan-400 hover:shadow-[0_0_28px_rgba(0,241,242,0.5)] sm:flex"
+              className="group hidden items-center gap-2 rounded-full bg-cyan-500 px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-snow transition-all duration-300 hover:bg-cyan-600 hover:shadow-[0_0_28px_rgba(0,212,213,0.4)] sm:flex"
             >
               Start a project
               <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none">
@@ -99,15 +99,15 @@ export default function Nav() {
             <button
               onClick={() => setOpen(!open)}
               aria-label={open ? "Close menu" : "Open menu"}
-              className="flex h-11 w-11 flex-col items-center justify-center gap-[7px] rounded-full border border-white/15 lg:hidden"
+              className="flex h-11 w-11 flex-col items-center justify-center gap-[7px] rounded-full border border-ink/10 lg:hidden"
             >
               <span
-                className={`h-px w-5 bg-snow transition-all duration-300 ${
+                className={`h-px w-5 bg-ink transition-all duration-300 ${
                   open ? "translate-y-[4px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`h-px w-5 bg-snow transition-all duration-300 ${
+                className={`h-px w-5 bg-ink transition-all duration-300 ${
                   open ? "-translate-y-[4px] -rotate-45" : ""
                 }`}
               />
@@ -122,7 +122,7 @@ export default function Nav() {
 
       {/* Mobile overlay menu */}
       <div
-        className={`fixed inset-0 z-[55] flex flex-col justify-between bg-charcoal-950/95 px-6 pb-8 pt-28 backdrop-blur-xl transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 z-[55] flex flex-col justify-between bg-snow/95 px-6 pb-8 pt-28 backdrop-blur-xl transition-all duration-500 lg:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -132,27 +132,27 @@ export default function Nav() {
               key={l.id}
               onClick={() => go(l.id)}
               style={{ transitionDelay: open ? `${80 + i * 45}ms` : "0ms" }}
-              className={`group flex items-baseline gap-4 border-b border-white/8 py-3.5 text-left transition-all duration-500 ${
+              className={`group flex items-baseline gap-4 border-b border-ink/8 py-3.5 text-left transition-all duration-500 ${
                 open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
               }`}
             >
               <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-500">
                 0{i + 1}
               </span>
-              <span className="font-display text-3xl font-bold text-snow transition-colors group-hover:text-cyan-400">
+              <span className="font-display text-3xl font-bold text-ink transition-colors group-hover:text-cyan-600">
                 {l.label}
               </span>
             </button>
           ))}
         </nav>
-        <div className="space-y-2 font-mono text-xs text-mist">
-          <a href={`mailto:${BRAND.email}`} className="link-sweep block w-fit text-snow">
+        <div className="space-y-2 font-mono text-xs text-graphite">
+          <a href={`mailto:${BRAND.email}`} className="link-sweep block w-fit text-ink">
             {BRAND.email}
           </a>
-          <a href={BRAND.phoneHref} className="link-sweep block w-fit text-snow">
+          <a href={BRAND.phoneHref} className="link-sweep block w-fit text-ink">
             {BRAND.phoneDisplay}
           </a>
-          <p className="pt-2 uppercase tracking-[0.25em] text-mist/70">{BRAND.city}</p>
+          <p className="pt-2 uppercase tracking-[0.25em] text-ash/70">{BRAND.city}</p>
         </div>
       </div>
     </>

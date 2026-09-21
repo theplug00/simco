@@ -30,7 +30,7 @@ export default function ParallaxSection({
         }`}
       />
       {overlay && (
-        <div className="absolute inset-0 bg-gradient-to-b from-charcoal-950/60 via-charcoal-950/30 to-charcoal-950/80" />
+        <div className="absolute inset-0 bg-gradient-to-b from-ink/50 via-ink/30 to-ink/70" />
       )}
       <div className="relative z-10 flex h-full flex-col items-center justify-center px-5 text-center">
         <div
@@ -42,7 +42,7 @@ export default function ParallaxSection({
             {title}
           </h2>
           {subtitle && (
-            <p className="mt-4 max-w-2xl text-base text-mist sm:text-lg">
+            <p className="mt-4 max-w-2xl text-base text-smoke sm:text-lg">
               {subtitle}
             </p>
           )}

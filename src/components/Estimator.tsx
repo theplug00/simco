@@ -40,10 +40,10 @@ function Slider({
   return (
     <div>
       <div className="mb-3 flex items-baseline justify-between">
-        <label className="font-mono text-[10px] uppercase tracking-[0.24em] text-mist">
+        <label className="font-mono text-[10px] uppercase tracking-[0.24em] text-graphite">
           {label}
         </label>
-        <span className="font-display text-xl font-bold tabular-nums text-cyan-400">
+        <span className="font-display text-xl font-bold tabular-nums text-cyan-600">
           {format(value)}
         </span>
       </div>
@@ -84,15 +84,15 @@ export default function Estimator() {
     kwh >= 1000 ? `${(kwh / 1000).toFixed(1)} MWh` : `${Math.round(kwh)} kWh`;
 
   return (
-    <section id="estimator" className="relative scroll-mt-20 overflow-hidden bg-charcoal-950 text-snow">
-      <div className="gridlines-light pointer-events-none absolute inset-0 opacity-40" />
-      <div className="pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-cyan-500/10 blur-[130px]" />
+    <section id="estimator" className="relative scroll-mt-20 overflow-hidden bg-snow text-ink">
+      <div className="gridlines-light pointer-events-none absolute inset-0 opacity-50" />
+      <div className="pointer-events-none absolute -left-40 top-1/3 h-[520px] w-[520px] rounded-full bg-cyan-500/8 blur-[130px]" />
 
       <div ref={ref} className="relative px-5 py-24 sm:px-8 lg:px-14 lg:py-32 xl:px-20">
         <div className="grid gap-14 lg:grid-cols-12">
           {/* left rail */}
           <div className="lg:col-span-5">
-            <Eyebrow index="04" dark>
+            <Eyebrow index="04">
               Solar + storage estimator
             </Eyebrow>
             <Lines
@@ -104,7 +104,7 @@ export default function Estimator() {
                 </span>,
               ]}
             />
-            <p className="mt-6 max-w-md text-base leading-relaxed text-mist">
+            <p className="mt-6 max-w-md text-base leading-relaxed text-graphite">
               Slide your numbers through our yield model — the same one we take
               to bank meetings — and see the system size, the saving and the
               carbon before anyone sets foot on your roof.
@@ -115,13 +115,13 @@ export default function Estimator() {
                 "London irradiance dataset, 10-yr average",
                 "SEG export tariffs built in",
               ].map((t) => (
-                <li key={t} className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-mist">
-                  <span className="h-1.5 w-1.5 rotate-45 bg-green-400" />
+                <li key={t} className="flex items-center gap-3 font-mono text-[11px] uppercase tracking-[0.18em] text-graphite">
+                  <span className="h-1.5 w-1.5 rotate-45 bg-green-500" />
                   {t}
                 </li>
               ))}
             </ul>
-            <p className="mt-10 max-w-sm border-l-2 border-white/15 pl-4 text-xs leading-relaxed text-mist/80">
+            <p className="mt-10 max-w-sm border-l-2 border-ink/15 pl-4 text-xs leading-relaxed text-ash">
               Indicative only. A site survey and DNO check always precede a
               formal quotation — that's how the numbers stay honest.
             </p>
@@ -129,20 +129,20 @@ export default function Estimator() {
 
           {/* configurator */}
           <div className={`reveal lg:col-span-7 ${inView ? "in" : ""}`}>
-            <div className="glass-dark rounded-lg p-6 sm:p-8 lg:p-10">
+            <div className="glass-light rounded-lg p-6 sm:p-8 lg:p-10">
               <div className="flex flex-wrap items-center justify-between gap-4">
-                <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-mist">
+                <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-ash">
                   Usage profile
                 </p>
-                <div className="flex rounded-full border border-white/12 p-1">
+                <div className="flex rounded-full border border-ink/12 p-1">
                   {PROFILES.map((p) => (
                     <button
                       key={p.id}
                       onClick={() => setProfile(p.id)}
                       className={`rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.14em] transition-all duration-300 ${
                         profile === p.id
-                          ? "bg-cyan-500 font-semibold text-charcoal-950"
-                          : "text-mist hover:text-snow"
+                          ? "bg-cyan-500 font-semibold text-snow"
+                          : "text-graphite hover:text-ink"
                       }`}
                     >
                       {p.label}
@@ -172,18 +172,18 @@ export default function Estimator() {
                 />
               </div>
 
-              <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-white/10 bg-white/10 lg:grid-cols-4">
+              <div className="mt-10 grid grid-cols-2 gap-px overflow-hidden rounded-md border border-ink/10 bg-ink/10 lg:grid-cols-4">
                 {[
-                  { label: "System size", value: `${r.kwp.toFixed(1)} kWp`, tone: "text-snow" },
-                  { label: "Generation / yr", value: fmtGen(r.genKwh), tone: "text-snow" },
-                  { label: "Saving / yr", value: `£${Math.round(r.savings).toLocaleString("en-GB")}`, tone: "text-cyan-400" },
-                  { label: "CO₂ avoided / yr", value: `${r.co2.toFixed(1)} t`, tone: "text-green-400" },
+                  { label: "System size", value: `${r.kwp.toFixed(1)} kWp`, tone: "text-ink" },
+                  { label: "Generation / yr", value: fmtGen(r.genKwh), tone: "text-ink" },
+                  { label: "Saving / yr", value: `£${Math.round(r.savings).toLocaleString("en-GB")}`, tone: "text-cyan-600" },
+                  { label: "CO₂ avoided / yr", value: `${r.co2.toFixed(1)} t`, tone: "text-green-600" },
                 ].map((o) => (
-                  <div key={o.label} className="bg-charcoal-950/70 px-4 py-5">
+                  <div key={o.label} className="bg-snow px-4 py-5">
                     <p className={`font-display text-lg font-extrabold tabular-nums sm:text-xl ${o.tone}`}>
                       {o.value}
                     </p>
-                    <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-mist">
+                    <p className="mt-1.5 font-mono text-[9px] uppercase tracking-[0.2em] text-ash">
                       {o.label}
                     </p>
                   </div>
@@ -192,22 +192,22 @@ export default function Estimator() {
 
               <div className="mt-8 flex flex-wrap items-end justify-between gap-4">
                 <div>
-                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-mist">
+                  <p className="font-mono text-[10px] uppercase tracking-[0.24em] text-ash">
                     Indicative payback
                   </p>
-                  <p className="font-display mt-1 text-3xl font-extrabold text-cyan-400">
+                  <p className="font-display mt-1 text-3xl font-extrabold text-cyan-600">
                     {r.payback.toFixed(1)}{" "}
-                    <span className="text-lg font-bold text-mist">yrs</span>
+                    <span className="text-lg font-bold text-graphite">yrs</span>
                   </p>
                 </div>
                 <div className="w-full max-w-[220px]">
-                  <div className="h-1.5 overflow-hidden rounded-full bg-white/10">
+                  <div className="h-1.5 overflow-hidden rounded-full bg-ink/10">
                     <div
                       className="h-full rounded-full bg-gradient-to-r from-cyan-500 to-green-500 transition-all duration-700 ease-out"
                       style={{ width: `${Math.min((r.payback / 15) * 100, 100)}%` }}
                     />
                   </div>
-                  <p className="mt-2 text-right font-mono text-[9px] uppercase tracking-[0.2em] text-mist/70">
+                  <p className="mt-2 text-right font-mono text-[9px] uppercase tracking-[0.2em] text-ash/70">
                     vs 25-yr asset life
                   </p>
                 </div>

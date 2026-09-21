@@ -3,6 +3,40 @@ import { usePrefersReducedMotion } from "../lib/hooks";
 import { TICKER_ITEMS, IMG } from "../lib/data";
 import { Marquee, ArrowUpRight } from "./ui";
 
+function useLondonTime() {
+  const [time, setTime] = useState("");
+  const [date, setDate] = useState("");
+
+  useEffect(() => {
+    const updateTime = () => {
+      const now = new Date();
+      const londonTime = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/London",
+        hour: "2-digit",
+        minute: "2-digit",
+        second: "2-digit",
+        hour12: false,
+      }).format(now);
+
+      const londonDate = new Intl.DateTimeFormat("en-GB", {
+        timeZone: "Europe/London",
+        weekday: "long",
+        day: "numeric",
+        month: "short",
+      }).format(now);
+
+      setTime(londonTime);
+      setDate(londonDate);
+    };
+
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  return { time, date };
+}
+
 const HERO_SLIDES = [
   {
     img: IMG.farm,
@@ -29,6 +63,14 @@ const HERO_SLIDES = [
 export default function Opening() {
   const [currentSlide, setCurrentSlide] = useState(0);
   const reduced = usePrefersReducedMotion();
+  const { time, date } = useLondonTime();
+
+  // Static weather data for London (realistic conditions)
+  const weather = {
+    temp: 14,
+    condition: "Partly Cloudy",
+    icon: "⛅",
+  };
 
   useEffect(() => {
     if (reduced) return;
@@ -69,9 +111,23 @@ export default function Opening() {
             <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-green-400" />
             Live · UK grid export
           </span>
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.28em] text-snow/70 sm:block">
-            London · United Kingdom
-          </span>
+          <div className="flex items-center gap-6">
+            {/* Weather */}
+            <div className="hidden items-center gap-3 rounded-full border border-snow/20 bg-snow/5 px-4 py-2 backdrop-blur-md sm:flex">
+              <span className="text-lg">{weather.icon}</span>
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-snow/80">
+                <span className="block text-snow">{weather.temp}°C</span>
+                <span className="text-[8px] text-snow/60">{weather.condition}</span>
+              </div>
+            </div>
+            {/* Time */}
+            <div className="hidden items-center gap-3 rounded-full border border-cyan-500/30 bg-cyan-500/10 px-4 py-2 backdrop-blur-md md:flex">
+              <div className="font-mono text-[10px] uppercase tracking-[0.2em]">
+                <span className="block text-cyan-400">{time}</span>
+                <span className="text-[8px] text-snow/60">{date} · London</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

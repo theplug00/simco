@@ -1,6 +1,7 @@
 import { BRAND, IMG } from "../lib/data";
 
 const EXPLORE = [
+  { id: "pillars", label: "Pillars" },
   { id: "capabilities", label: "Capabilities" },
   { id: "projects", label: "Projects" },
   { id: "impact", label: "Impact" },

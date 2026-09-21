@@ -228,6 +228,42 @@ h1, h2, h3, h4, h5, h6 {
   transform: scale(1.06);
 }
 
+/* ---------- Metlen-inspired hero text stroke ---------- */
+.text-stroke-cyan {
+  color: transparent;
+  -webkit-text-stroke: 1.5px #00d4d5;
+}
+
+/* ---------- Metlen-style card hover lift ---------- */
+.card-lift {
+  transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.5s ease;
+}
+.card-lift:hover {
+  transform: translateY(-4px);
+}
+
+/* ---------- Image reveal on scroll ---------- */
+.img-reveal {
+  clip-path: inset(100% 0 0 0);
+  transition: clip-path 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.img-reveal.in {
+  clip-path: inset(0 0 0 0);
+}
+
+/* ---------- Metlen-style divider ---------- */
+.metlen-divider {
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    currentColor 20%,
+    currentColor 80%,
+    transparent
+  );
+  opacity: 0.15;
+}
+
 /* ---------- reduced motion ---------- */
 @media (prefers-reduced-motion: reduce) {
   html {

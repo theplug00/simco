@@ -3,6 +3,7 @@ import { useActiveSection, useScrollY } from "../lib/hooks";
 import { BRAND, IMG } from "../lib/data";
 
 const LINKS = [
+  { id: "pillars", label: "Pillars" },
   { id: "capabilities", label: "Capabilities" },
   { id: "projects", label: "Projects" },
   { id: "impact", label: "Impact" },

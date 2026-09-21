@@ -4,6 +4,7 @@ import Nav from "./components/Nav";
 import Opening from "./components/Opening";
 import Capabilities from "./components/Capabilities";
 import Projects from "./components/Projects";
+import Impact from "./components/Impact";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ParallaxSection from "./components/ParallaxSection";
@@ -41,6 +42,19 @@ export default function App() {
           height="h-[50vh]"
         />
         <Projects />
+        <ParallaxSection
+          image={IMG.solarClose}
+          title="Every panel, every cable, every connection"
+          subtitle="Quality is non-negotiable. We build to last 30 years — because that's the commitment we make to our clients."
+          height="h-[50vh]"
+        />
+        <Impact />
+        <ParallaxSection
+          image={IMG.bessTwilight}
+          title="The grid's next chapter starts here"
+          subtitle="From rooftop to grid-scale, we're building the renewable backbone of the UK."
+          height="h-[50vh]"
+        />
         <Contact />
       </main>
       <Footer />

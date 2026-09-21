@@ -5,6 +5,7 @@ import { BRAND, IMG } from "../lib/data";
 const LINKS = [
   { id: "capabilities", label: "Capabilities" },
   { id: "projects", label: "Projects" },
+  { id: "impact", label: "Impact" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -44,7 +45,7 @@ export default function Nav() {
             className="group flex items-center gap-3 text-left"
             aria-label="Back to top"
           >
-            <img src={IMG.logo} alt="SIMCO logo" className="h-10 w-10 rounded-lg" />
+            <img src={IMG.logo} alt="SIMCO logo" className="h-10 w-10" />
             <span className="leading-none">
               <span className="block text-[17px] font-extrabold tracking-tight text-ink">
                 SIMCO

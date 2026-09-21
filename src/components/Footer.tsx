@@ -3,6 +3,7 @@ import { BRAND, IMG } from "../lib/data";
 const EXPLORE = [
   { id: "capabilities", label: "Capabilities" },
   { id: "projects", label: "Projects" },
+  { id: "impact", label: "Impact" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -16,7 +17,7 @@ export default function Footer() {
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
-              <img src={IMG.logo} alt="SIMCO logo" className="h-12 w-12 rounded-lg" />
+              <img src={IMG.logo} alt="SIMCO logo" className="h-12 w-12" />
               <span className="leading-none">
                 <span className="block text-xl font-extrabold tracking-tight">SIMCO</span>
                 <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-smoke">

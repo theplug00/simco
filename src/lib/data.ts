@@ -137,3 +137,17 @@ export const ACCREDITATIONS = [
   "ISO 14001",
   "ISO 45001",
 ];
+
+export interface ImpactRow {
+  value: string;
+  label: string;
+  pct: number;
+  tone: "cyan" | "green";
+}
+
+export const IMPACT: ImpactRow[] = [
+  { value: "36,400 t", label: "CO₂e avoided per year across the fleet", pct: 82, tone: "green" },
+  { value: "91,000", label: "UK homes' annual demand matched by our arrays", pct: 68, tone: "cyan" },
+  { value: "46 ha", label: "pollinator habitat planted beneath panels", pct: 45, tone: "green" },
+  { value: "96%", label: "panel mass recycled at end of life", pct: 96, tone: "cyan" },
+];

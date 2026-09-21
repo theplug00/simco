@@ -64,7 +64,7 @@ export default function Preloader({
             mounted ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
           }`}
         >
-          <img src={IMG.logo} alt="SIMCO logo" className="h-8 w-8 rounded-lg" />
+          <img src={IMG.logo} alt="SIMCO logo" className="h-8 w-8" />
           <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-ash">
             Loading grid telemetry
           </span>

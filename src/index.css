@@ -22,10 +22,9 @@
   --color-green-500: #6bc46b;
   --color-green-600: #4a9e4a;
 
-  /* Single font family for uniform look */
+  /* Stylish font combination */
   --font-sans: "Inter", system-ui, -apple-system, sans-serif;
-
-  --font-display: "Inter", system-ui, sans-serif;
+  --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
 }
@@ -35,11 +34,15 @@ html {
 }
 
 body {
-  font-family: var(--font-sans);
+  font-family: var(--font-body);
   background-color: var(--color-snow);
   color: var(--color-ink);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
 }
 
 ::selection {
@@ -154,6 +157,19 @@ body {
 }
 .pulse-dot {
   animation: pulse-dot 2.3s ease-in-out infinite;
+}
+
+@keyframes bar-grow {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+.bar-grow {
+  transform-origin: left center;
+  animation: bar-grow 1.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
 
 @keyframes floaty {

@@ -1,5 +1,5 @@
 export const IMG = {
-  logo: "https://image.qwenlm.ai/generated-images/307e615a-0894-4c63-a6a2-696f7ab5ada1/_result.png",
+  logo: "https://image.qwenlm.ai/generated-images/05c45b86-5c74-42af-9409-0ca6c7485c09/_result.png",
   farm: "https://image.qwenlm.ai/generated-images/7f65aace-fa6f-4d91-988b-baefe680d283/_result.png",
   rooftop:
     "https://image.qwenlm.ai/generated-images/34e3aa6d-3b94-4b90-b6a4-88a6b429f88b/_result.png",

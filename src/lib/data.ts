@@ -9,6 +9,12 @@ export const IMG = {
     "https://image.qwenlm.ai/generated-images/ff5e0ffb-f6bb-42d8-a18c-398b81cb74b5/_result.png",
   substation:
     "https://image.qwenlm.ai/generated-images/752dd1d4-92b2-4dc7-b68d-3b11d1f7cb15/_result.png",
+  solarClose:
+    "https://image.qwenlm.ai/generated-images/a7e95596-e158-4751-ab61-c0bf13d10748/_result.png",
+  wind: "https://image.qwenlm.ai/generated-images/b4863d2c-cb24-42ad-977a-9ffbb48b52fc/_result.png",
+  team: "https://image.qwenlm.ai/generated-images/5cb56f13-a15a-4cc8-942a-ba600de854af/_result.png",
+  bessTwilight:
+    "https://image.qwenlm.ai/generated-images/3ea44f30-ca12-4696-ab8f-683617ae08e4/_result.png",
 };
 
 export const BRAND = {

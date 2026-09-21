@@ -57,10 +57,10 @@ export default function Nav() {
           >
             <LogoMark className="h-9 w-9 transition-transform duration-500 group-hover:rotate-45" />
             <span className="leading-none">
-              <span className="font-display block text-[17px] font-extrabold tracking-tight text-paper">
+              <span className="font-display block text-[17px] font-extrabold tracking-tight text-snow">
                 SIMCO
               </span>
-              <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-fog">
+              <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-mist">
                 Renewables
               </span>
             </span>
@@ -72,12 +72,12 @@ export default function Nav() {
                 key={l.id}
                 onClick={() => go(l.id)}
                 className={`relative font-mono text-[11px] uppercase tracking-[0.22em] transition-colors duration-300 ${
-                  active === l.id ? "text-amber-400" : "text-fog hover:text-paper"
+                  active === l.id ? "text-cyan-400" : "text-mist hover:text-snow"
                 }`}
               >
                 {l.label}
                 <span
-                  className={`absolute -bottom-1.5 left-0 h-px bg-amber-400 transition-all duration-300 ${
+                  className={`absolute -bottom-1.5 left-0 h-px bg-cyan-500 transition-all duration-300 ${
                     active === l.id ? "w-full" : "w-0"
                   }`}
                 />
@@ -88,7 +88,7 @@ export default function Nav() {
           <div className="flex items-center gap-3">
             <button
               onClick={() => go("contact")}
-              className="group hidden items-center gap-2 rounded-full bg-amber-500 px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-pine-950 transition-all duration-300 hover:bg-amber-400 hover:shadow-[0_0_28px_rgba(226,154,43,0.45)] sm:flex"
+              className="group hidden items-center gap-2 rounded-full bg-cyan-500 px-5 py-2.5 font-mono text-[11px] font-semibold uppercase tracking-[0.18em] text-charcoal-950 transition-all duration-300 hover:bg-cyan-400 hover:shadow-[0_0_28px_rgba(0,241,242,0.5)] sm:flex"
             >
               Start a project
               <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none">
@@ -102,12 +102,12 @@ export default function Nav() {
               className="flex h-11 w-11 flex-col items-center justify-center gap-[7px] rounded-full border border-white/15 lg:hidden"
             >
               <span
-                className={`h-px w-5 bg-paper transition-all duration-300 ${
+                className={`h-px w-5 bg-snow transition-all duration-300 ${
                   open ? "translate-y-[4px] rotate-45" : ""
                 }`}
               />
               <span
-                className={`h-px w-5 bg-paper transition-all duration-300 ${
+                className={`h-px w-5 bg-snow transition-all duration-300 ${
                   open ? "-translate-y-[4px] -rotate-45" : ""
                 }`}
               />
@@ -115,14 +115,14 @@ export default function Nav() {
           </div>
         </div>
         <div
-          className="absolute bottom-[-2px] left-0 h-[2px] bg-amber-500 transition-[width] duration-150 ease-out"
+          className="absolute bottom-[-2px] left-0 h-[2px] bg-cyan-500 transition-[width] duration-150 ease-out"
           style={{ width: `${pct}%` }}
         />
       </header>
 
       {/* Mobile overlay menu */}
       <div
-        className={`fixed inset-0 z-[55] flex flex-col justify-between bg-pine-950/95 px-6 pb-8 pt-28 backdrop-blur-xl transition-all duration-500 lg:hidden ${
+        className={`fixed inset-0 z-[55] flex flex-col justify-between bg-charcoal-950/95 px-6 pb-8 pt-28 backdrop-blur-xl transition-all duration-500 lg:hidden ${
           open ? "pointer-events-auto opacity-100" : "pointer-events-none opacity-0"
         }`}
       >
@@ -136,23 +136,23 @@ export default function Nav() {
                 open ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0"
               }`}
             >
-              <span className="font-mono text-[10px] tracking-[0.2em] text-amber-500">
+              <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-500">
                 0{i + 1}
               </span>
-              <span className="font-display text-3xl font-bold text-paper transition-colors group-hover:text-amber-400">
+              <span className="font-display text-3xl font-bold text-snow transition-colors group-hover:text-cyan-400">
                 {l.label}
               </span>
             </button>
           ))}
         </nav>
-        <div className="space-y-2 font-mono text-xs text-fog">
-          <a href={`mailto:${BRAND.email}`} className="link-sweep block w-fit text-paper">
+        <div className="space-y-2 font-mono text-xs text-mist">
+          <a href={`mailto:${BRAND.email}`} className="link-sweep block w-fit text-snow">
             {BRAND.email}
           </a>
-          <a href={BRAND.phoneHref} className="link-sweep block w-fit text-paper">
+          <a href={BRAND.phoneHref} className="link-sweep block w-fit text-snow">
             {BRAND.phoneDisplay}
           </a>
-          <p className="pt-2 uppercase tracking-[0.25em] text-fog/70">{BRAND.city}</p>
+          <p className="pt-2 uppercase tracking-[0.25em] text-mist/70">{BRAND.city}</p>
         </div>
       </div>
     </>

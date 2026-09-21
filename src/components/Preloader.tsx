@@ -51,12 +51,12 @@ export default function Preloader({
   return (
     <div
       aria-hidden="true"
-      className={`fixed inset-0 z-[100] flex flex-col justify-between overflow-hidden bg-pine-950 text-paper transition-transform duration-[850ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${
+      className={`fixed inset-0 z-[100] flex flex-col justify-between overflow-hidden bg-charcoal-950 text-snow transition-transform duration-[850ms] ease-[cubic-bezier(0.76,0,0.24,1)] ${
         leaving ? "-translate-y-full" : "translate-y-0"
       }`}
     >
       <div className="gridlines-light pointer-events-none absolute inset-0 opacity-70" />
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-amber-500/15 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-cyan-500/12 blur-[120px]" />
 
       <div className="relative flex items-center justify-between px-5 pt-6 sm:px-8 lg:px-14">
         <div
@@ -65,11 +65,11 @@ export default function Preloader({
           }`}
         >
           <LogoMark className="h-8 w-8" />
-          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-fog">
+          <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-mist">
             Loading grid telemetry
           </span>
         </div>
-        <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-fog">
+        <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-mist">
           London · UK
         </span>
       </div>
@@ -91,7 +91,7 @@ export default function Preloader({
           ))}
         </div>
         <p
-          className={`mt-4 font-mono text-[11px] uppercase tracking-[0.42em] text-amber-400 transition-all delay-500 duration-700 ${
+          className={`mt-4 font-mono text-[11px] uppercase tracking-[0.42em] text-cyan-400 transition-all delay-500 duration-700 ${
             mounted ? "translate-y-0 opacity-100" : "translate-y-3 opacity-0"
           }`}
         >
@@ -101,17 +101,17 @@ export default function Preloader({
 
       <div className="relative px-5 pb-6 sm:px-8 lg:px-14">
         <div className="flex items-end justify-between font-mono">
-          <span className="text-[11px] uppercase tracking-[0.3em] text-fog">
+          <span className="text-[11px] uppercase tracking-[0.3em] text-mist">
             Solar · Storage · Grid
           </span>
-          <span className="text-4xl font-medium tabular-nums text-paper sm:text-5xl">
+          <span className="text-4xl font-medium tabular-nums text-snow sm:text-5xl">
             {progress}
-            <span className="text-amber-500">%</span>
+            <span className="text-cyan-500">%</span>
           </span>
         </div>
         <div className="mt-3 h-px w-full bg-white/10">
           <div
-            className="h-full bg-amber-500 transition-[width] duration-150 ease-out"
+            className="h-full bg-cyan-500 transition-[width] duration-150 ease-out"
             style={{ width: `${progress}%` }}
           />
         </div>

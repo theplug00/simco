@@ -24,28 +24,61 @@ function useLiveTelemetry() {
   return { gridMw, irradiance, co2Today };
 }
 
+const HERO_SLIDES = [
+  {
+    img: IMG.farm,
+    label: "Thames Gateway · 42 MWp",
+    caption: "Utility-scale solar park",
+  },
+  {
+    img: IMG.solarClose,
+    label: "C&I Rooftop Array",
+    caption: "3.8 MWp across 9 blocks",
+  },
+  {
+    img: IMG.bessTwilight,
+    label: "Lea Valley BESS",
+    caption: "20 MW / 40 MWh storage facility",
+  },
+  {
+    img: IMG.wind,
+    label: "Offshore Wind Integration",
+    caption: "Grid connection infrastructure",
+  },
+];
+
 export default function Opening() {
   const { gridMw, irradiance, co2Today } = useLiveTelemetry();
+  const [currentSlide, setCurrentSlide] = useState(0);
+  const reduced = usePrefersReducedMotion();
+
+  useEffect(() => {
+    if (reduced) return;
+    const id = setInterval(() => {
+      setCurrentSlide((s) => (s + 1) % HERO_SLIDES.length);
+    }, 5000);
+    return () => clearInterval(id);
+  }, [reduced]);
 
   const go = (id: string) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
 
   return (
-    <section id="home" className="relative overflow-hidden bg-pine-950 text-paper">
+    <section id="home" className="relative overflow-hidden bg-charcoal-950 text-snow">
       {/* layered ambient background */}
       <div className="gridlines-light absolute inset-0" />
-      <div className="pointer-events-none absolute -right-48 -top-48 h-[620px] w-[620px] rounded-full bg-amber-500/14 blur-[130px]" />
-      <div className="pointer-events-none absolute -bottom-56 -left-40 h-[540px] w-[540px] rounded-full bg-leaf-500/8 blur-[130px]" />
-      <SunArc className="sun-spin pointer-events-none absolute -right-40 top-24 hidden h-[520px] w-[520px] opacity-60 lg:block" />
+      <div className="pointer-events-none absolute -right-48 -top-48 h-[620px] w-[620px] rounded-full bg-cyan-500/10 blur-[130px]" />
+      <div className="pointer-events-none absolute -bottom-56 -left-40 h-[540px] w-[540px] rounded-full bg-green-500/6 blur-[130px]" />
+      <SunArc className="sun-spin pointer-events-none absolute -right-40 top-24 hidden h-[520px] w-[520px] opacity-50 lg:block" />
 
       <div className="relative px-5 pb-14 pt-32 sm:px-8 lg:px-14 lg:pt-40 xl:px-20">
         {/* meta strip */}
         <div className="mb-10 flex flex-wrap items-center justify-between gap-4 lg:mb-14">
-          <span className="glass-dark flex items-center gap-2.5 rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.24em] text-leaf-300">
-            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-leaf-400" />
+          <span className="glass-dark flex items-center gap-2.5 rounded-full px-4 py-2 font-mono text-[10px] uppercase tracking-[0.24em] text-green-400">
+            <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-green-400" />
             Live · UK grid export
           </span>
-          <span className="hidden font-mono text-[10px] uppercase tracking-[0.28em] text-fog sm:block">
+          <span className="hidden font-mono text-[10px] uppercase tracking-[0.28em] text-mist sm:block">
             {BRAND.coordinates} — {BRAND.city}
           </span>
         </div>
@@ -62,17 +95,17 @@ export default function Opening() {
                   key="b"
                   style={{
                     color: "transparent",
-                    WebkitTextStroke: "1.5px #F0B356",
+                    WebkitTextStroke: "1.5px #00F1F2",
                   }}
                 >
                   engineered
                 </span>,
                 <span key="c">
-                  into assets<span className="text-amber-500">.</span>
+                  into assets<span className="text-cyan-500">.</span>
                 </span>,
               ]}
             />
-            <p className="mt-8 max-w-md text-base leading-relaxed text-fog sm:text-lg">
+            <p className="mt-8 max-w-md text-base leading-relaxed text-mist sm:text-lg">
               Simco is a London-based EPC &amp; O&amp;M contractor building the
               UK's renewable backbone — solar farms, rooftop arrays, battery
               storage and the civil, electrical and telecom works that connect
@@ -81,14 +114,14 @@ export default function Opening() {
             <div className="mt-10 flex flex-wrap items-center gap-6">
               <button
                 onClick={() => go("contact")}
-                className="group flex items-center gap-3 rounded-full bg-amber-500 px-7 py-4 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-pine-950 transition-all duration-300 hover:bg-amber-400 hover:shadow-[0_0_36px_rgba(226,154,43,0.5)]"
+                className="group flex items-center gap-3 rounded-full bg-cyan-500 px-7 py-4 font-mono text-xs font-semibold uppercase tracking-[0.18em] text-charcoal-950 transition-all duration-300 hover:bg-cyan-400 hover:shadow-[0_0_36px_rgba(0,241,242,0.5)]"
               >
                 Scope your project
                 <ArrowUpRight className="h-4 w-4 transition-transform duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
               </button>
               <button
                 onClick={() => go("capabilities")}
-                className="link-sweep pb-1 font-mono text-xs uppercase tracking-[0.2em] text-paper"
+                className="link-sweep pb-1 font-mono text-xs uppercase tracking-[0.2em] text-snow"
               >
                 Explore capabilities
               </button>
@@ -97,15 +130,15 @@ export default function Opening() {
             {/* live telemetry strip */}
             <div className="mt-14 grid max-w-xl grid-cols-2 gap-px overflow-hidden rounded-lg border border-white/10 bg-white/10 sm:grid-cols-3">
               {[
-                { label: "Grid output", value: `${gridMw.toFixed(2)} MW`, tone: "text-amber-400" },
-                { label: "Irradiance", value: `${irradiance} W/m²`, tone: "text-paper" },
-                { label: "CO₂ avoided today", value: `${co2Today.toFixed(2)} t`, tone: "text-leaf-400" },
+                { label: "Grid output", value: `${gridMw.toFixed(2)} MW`, tone: "text-cyan-400" },
+                { label: "Irradiance", value: `${irradiance} W/m²`, tone: "text-snow" },
+                { label: "CO₂ avoided today", value: `${co2Today.toFixed(2)} t`, tone: "text-green-400" },
               ].map((s) => (
-                <div key={s.label} className="bg-pine-900/80 px-5 py-4">
+                <div key={s.label} className="bg-charcoal-900/80 px-5 py-4">
                   <p className={`font-display text-xl font-bold tabular-nums sm:text-2xl ${s.tone}`}>
                     {s.value}
                   </p>
-                  <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.22em] text-fog">
+                  <p className="mt-1 font-mono text-[9px] uppercase tracking-[0.22em] text-mist">
                     {s.label}
                   </p>
                 </div>
@@ -113,31 +146,49 @@ export default function Opening() {
             </div>
           </div>
 
-          {/* image panel */}
+          {/* hero carousel */}
           <div className="relative lg:col-span-5">
-            <div className="group relative overflow-hidden rounded-lg border border-white/12">
-              <img
-                src={IMG.farm}
-                alt="Aerial view of a utility-scale solar farm at golden hour"
-                className="kenburns h-[380px] w-full object-cover sm:h-[460px] lg:h-[540px]"
-              />
-              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-pine-950/70 via-transparent to-pine-950/20" />
-              <div className="glass-dark floaty absolute right-4 top-4 rounded-md px-3.5 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-paper">
-                Availability <span className="text-leaf-400">98.4%</span>
+            <div className="group relative aspect-[4/5] overflow-hidden rounded-lg border border-white/12">
+              {HERO_SLIDES.map((slide, i) => (
+                <img
+                  key={i}
+                  src={slide.img}
+                  alt={slide.caption}
+                  className={`absolute inset-0 h-full w-full object-cover transition-all duration-[1.4s] ease-[cubic-bezier(0.16,1,0.3,1)] ${
+                    i === currentSlide ? "scale-100 opacity-100" : "scale-105 opacity-0"
+                  }`}
+                />
+              ))}
+              <div className="pointer-events-none absolute inset-0 bg-gradient-to-t from-charcoal-950/80 via-transparent to-charcoal-950/20" />
+              <div className="glass-dark floaty absolute right-4 top-4 rounded-md px-3.5 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-snow">
+                Availability <span className="text-green-400">98.4%</span>
               </div>
-              <div className="glass-dark absolute bottom-4 left-4 flex items-center gap-2.5 rounded-md px-3.5 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-paper">
-                <svg viewBox="0 0 16 16" className="h-4 w-4 text-amber-400" fill="none">
+              <div className="glass-dark absolute bottom-4 left-4 flex items-center gap-2.5 rounded-md px-3.5 py-2.5 font-mono text-[10px] uppercase tracking-[0.18em] text-snow">
+                <svg viewBox="0 0 16 16" className="h-4 w-4 text-cyan-400" fill="none">
                   <circle cx="8" cy="8" r="3.2" fill="currentColor" />
                   <g stroke="currentColor" strokeWidth="1.4" strokeLinecap="round">
                     <path d="M8 1v2M8 13v2M1 8h2M13 8h2M3 3l1.4 1.4M11.6 11.6 13 13M13 3l-1.4 1.4M4.4 11.6 3 13" />
                   </g>
                 </svg>
-                Thames Gateway · 42 MWp
+                {HERO_SLIDES[currentSlide].label}
+              </div>
+              {/* slide indicators */}
+              <div className="absolute bottom-4 right-4 flex gap-2">
+                {HERO_SLIDES.map((_, i) => (
+                  <button
+                    key={i}
+                    onClick={() => setCurrentSlide(i)}
+                    className={`h-1.5 rounded-full transition-all duration-300 ${
+                      i === currentSlide ? "w-8 bg-cyan-500" : "w-1.5 bg-white/40"
+                    }`}
+                    aria-label={`Go to slide ${i + 1}`}
+                  />
+                ))}
               </div>
             </div>
-            <p className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-fog">
+            <p className="mt-3 flex justify-between font-mono text-[10px] uppercase tracking-[0.22em] text-mist">
               <span>Fig. 01 — Energised asset</span>
-              <span className="text-amber-500/80">Bexley, London</span>
+              <span className="text-cyan-500/80">{HERO_SLIDES[currentSlide].caption}</span>
             </p>
           </div>
         </div>
@@ -145,16 +196,16 @@ export default function Opening() {
         {/* scroll cue */}
         <div className="mt-16 hidden items-center gap-4 lg:flex">
           <span className="relative block h-14 w-px overflow-hidden bg-white/15">
-            <span className="absolute left-0 top-0 h-6 w-px animate-[scrollcue_2.2s_ease-in-out_infinite] bg-amber-500" />
+            <span className="absolute left-0 top-0 h-6 w-px animate-[scrollcue_2.2s_ease-in-out_infinite] bg-cyan-500" />
           </span>
-          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-fog">
+          <span className="font-mono text-[10px] uppercase tracking-[0.3em] text-mist">
             Scroll — the grid awaits
           </span>
         </div>
       </div>
 
-      {/* amber ticker */}
-      <div className="relative border-y border-pine-950/20 bg-amber-500 py-3.5 text-pine-950">
+      {/* cyan ticker */}
+      <div className="relative border-y border-charcoal-950/20 bg-cyan-500 py-3.5 text-charcoal-950">
         <Marquee
           items={TICKER_ITEMS}
           itemClassName="font-display text-sm font-bold uppercase tracking-[0.14em]"

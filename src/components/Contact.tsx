@@ -4,7 +4,6 @@ import { Eyebrow, Lines, Reveal } from "./ui";
 
 interface FormState {
   name: string;
-  company: string;
   email: string;
   phone: string;
   service: string;
@@ -13,7 +12,6 @@ interface FormState {
 
 const EMPTY: FormState = {
   name: "",
-  company: "",
   email: "",
   phone: "",
   service: "",
@@ -44,18 +42,17 @@ export default function Contact() {
   return (
     <section id="contact" className="relative scroll-mt-20 overflow-hidden bg-paper text-ink">
       <div className="gridlines-light pointer-events-none absolute inset-0" />
-      <div className="pointer-events-none absolute -bottom-40 -right-40 h-[560px] w-[560px] rounded-full bg-cyan-500/8 blur-[130px]" />
-      <div className="pointer-events-none absolute -left-32 top-24 h-[420px] w-[420px] rounded-full bg-green-500/6 blur-[120px]" />
+      <div className="pointer-events-none absolute -bottom-40 -right-40 h-[560px] w-[560px] rounded-full bg-cyan-500/6 blur-[130px]" />
 
       <div className="relative px-5 py-24 sm:px-8 lg:px-14 lg:py-32 xl:px-20">
         <div className="grid gap-14 lg:grid-cols-12">
           {/* left rail */}
-          <div className="lg:col-span-6">
-            <Eyebrow index="07">
+          <div className="lg:col-span-5">
+            <Eyebrow index="03">
               Start a project
             </Eyebrow>
             <Lines
-              className="font-display mt-6 text-[clamp(2.5rem,5.6vw,4.8rem)] font-extrabold leading-[0.98] tracking-tight"
+              className="mt-6 text-[clamp(2.5rem,5.6vw,4.8rem)] font-extrabold leading-[0.98] tracking-tight"
               lines={[
                 <span key="a">Let's build the grid's</span>,
                 <span key="b">
@@ -64,49 +61,33 @@ export default function Contact() {
               ]}
             />
             <p className="mt-6 max-w-md text-base leading-relaxed text-graphite">
-              Whether it's a single rooftop or a forty-megawatt field, the sales
-              desk answers inside one working day — with an engineer on the
-              call, not a script.
+              The sales desk answers inside one working day — with an engineer on the call, not a script.
             </p>
 
             <div className="mt-10 space-y-3">
               <a
                 href={`mailto:${BRAND.email}`}
-                className="link-sweep font-display block w-fit text-lg font-bold text-cyan-600 sm:text-2xl break-all"
+                className="link-sweep block w-fit text-lg font-bold text-cyan-600 sm:text-2xl break-all"
               >
                 {BRAND.email}
               </a>
               <a
                 href={BRAND.phoneHref}
-                className="link-sweep font-display block w-fit text-lg font-bold text-ink sm:text-2xl"
+                className="link-sweep block w-fit text-lg font-bold text-ink sm:text-2xl"
               >
                 {BRAND.phoneDisplay}
               </a>
             </div>
 
-            <dl className="mt-12 grid max-w-md grid-cols-2 gap-x-8 gap-y-6">
-              {[
-                { k: "Head office", v: BRAND.city },
-                { k: "Coverage", v: "UK-wide delivery" },
-                { k: "Hours", v: "Mon–Fri · 07:30–18:00" },
-                { k: "Emergency O&M", v: "24 / 7 line for clients" },
-              ].map((m) => (
-                <div key={m.k} className="border-t border-ink/12 pt-3">
-                  <dt className="font-mono text-[9px] uppercase tracking-[0.24em] text-ash">{m.k}</dt>
-                  <dd className="mt-1.5 text-sm font-medium text-ink">{m.v}</dd>
-                </div>
-              ))}
-            </dl>
-
             <div className="mt-12">
               <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-ash">
-                Accreditations & schemes
+                Accreditations
               </p>
               <div className="mt-4 flex max-w-md flex-wrap gap-2">
                 {ACCREDITATIONS.map((a) => (
                   <span
                     key={a}
-                    className="rounded-full border border-ink/12 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-graphite transition-colors duration-300 hover:border-cyan-500/60 hover:text-cyan-600"
+                    className="rounded-full border border-ink/12 px-3 py-1.5 font-mono text-[9px] uppercase tracking-[0.18em] text-graphite"
                   >
                     {a}
                   </span>
@@ -116,7 +97,7 @@ export default function Contact() {
           </div>
 
           {/* form */}
-          <div className="lg:col-span-6">
+          <div className="lg:col-span-6 lg:col-start-7">
             <Reveal delay={100}>
               <div className="glass-light rounded-lg p-6 sm:p-8 lg:p-10">
                 {sent ? (
@@ -125,7 +106,7 @@ export default function Contact() {
                       <circle cx="32" cy="32" r="30" stroke="#00d4d5" strokeWidth="2" />
                       <path d="m20 33 8 8 16-18" stroke="#00d4d5" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round" />
                     </svg>
-                    <h3 className="font-display mt-6 text-2xl font-extrabold sm:text-3xl">
+                    <h3 className="mt-6 text-2xl font-extrabold sm:text-3xl">
                       Request logged<span className="text-cyan-500">.</span>
                     </h3>
                     <p className="mt-3 max-w-xs text-sm leading-relaxed text-graphite">
@@ -160,12 +141,6 @@ export default function Contact() {
                         {errors.name && <p className="mt-1.5 font-mono text-[10px] text-cyan-600">{errors.name}</p>}
                       </div>
                       <div>
-                        <label htmlFor="f-company" className="mb-2 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash">
-                          Company
-                        </label>
-                        <input id="f-company" className={inputCls} placeholder="Whfield Estates" value={form.company} onChange={set("company")} />
-                      </div>
-                      <div>
                         <label htmlFor="f-email" className="mb-2 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash">
                           Email *
                         </label>
@@ -178,7 +153,7 @@ export default function Contact() {
                         </label>
                         <input id="f-phone" className={inputCls} placeholder="+44 …" value={form.phone} onChange={set("phone")} />
                       </div>
-                      <div className="sm:col-span-2">
+                      <div>
                         <label htmlFor="f-service" className="mb-2 block font-mono text-[10px] uppercase tracking-[0.2em] text-ash">
                           What do you need?
                         </label>
@@ -213,16 +188,13 @@ export default function Contact() {
                     </div>
                     <button
                       type="submit"
-                      className="group mt-8 flex w-full items-center justify-center gap-3 rounded-md bg-cyan-500 py-4 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-snow transition-all duration-300 hover:bg-cyan-600 hover:shadow-[0_0_36px_rgba(0,212,213,0.4)]"
+                      className="group mt-8 flex w-full items-center justify-center gap-3 rounded-md bg-cyan-500 py-4 text-xs font-semibold uppercase tracking-[0.2em] text-snow transition-all duration-300 hover:bg-cyan-600 hover:shadow-[0_0_36px_rgba(0,212,213,0.4)]"
                     >
                       Send to the sales desk
                       <svg viewBox="0 0 16 16" className="h-3.5 w-3.5 transition-transform duration-300 group-hover:translate-x-1" fill="none">
                         <path d="M2 8h11M9 3.5 13.5 8 9 12.5" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round" />
                       </svg>
                     </button>
-                    <p className="mt-4 text-center font-mono text-[9px] uppercase tracking-[0.2em] text-ash/70">
-                      No spam, no hand-offs — an engineer replies.
-                    </p>
                   </form>
                 )}
               </div>

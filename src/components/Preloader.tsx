@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { usePrefersReducedMotion } from "../lib/hooks";
-import { LogoMark } from "./ui";
+import { IMG } from "../lib/data";
 
 const WORD = "SIMCO";
 
@@ -56,7 +56,7 @@ export default function Preloader({
       }`}
     >
       <div className="gridlines-light pointer-events-none absolute inset-0 opacity-70" />
-      <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-cyan-500/8 blur-[120px]" />
+      <div className="pointer-events-none absolute -right-40 -top-40 h-[480px] w-[480px] rounded-full bg-cyan-500/6 blur-[120px]" />
 
       <div className="relative flex items-center justify-between px-5 pt-6 sm:px-8 lg:px-14">
         <div
@@ -64,7 +64,7 @@ export default function Preloader({
             mounted ? "translate-y-0 opacity-100" : "-translate-y-4 opacity-0"
           }`}
         >
-          <LogoMark className="h-8 w-8" />
+          <img src={IMG.logo} alt="SIMCO logo" className="h-8 w-8 rounded-lg" />
           <span className="font-mono text-[11px] uppercase tracking-[0.3em] text-ash">
             Loading grid telemetry
           </span>
@@ -79,7 +79,7 @@ export default function Preloader({
           {WORD.split("").map((ch, i) => (
             <span
               key={i}
-              className="font-display inline-block text-[clamp(4rem,14vw,11rem)] font-extrabold leading-[0.95] tracking-tight"
+              className="inline-block text-[clamp(4rem,14vw,11rem)] font-extrabold leading-[0.95] tracking-tight"
               style={{
                 transform: mounted ? "translateY(0)" : "translateY(112%)",
                 transition: "transform 0.9s cubic-bezier(0.16,1,0.3,1)",

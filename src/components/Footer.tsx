@@ -1,23 +1,9 @@
-import { BRAND } from "../lib/data";
-import { LogoMark, Marquee } from "./ui";
+import { BRAND, IMG } from "../lib/data";
 
 const EXPLORE = [
   { id: "capabilities", label: "Capabilities" },
   { id: "projects", label: "Projects" },
-  { id: "delivery", label: "Delivery" },
-  { id: "estimator", label: "Estimator" },
-  { id: "impact", label: "Impact" },
-  { id: "insights", label: "Insights" },
   { id: "contact", label: "Contact" },
-];
-
-const SERVICES_SHORT = [
-  "Solar PV & O&M",
-  "Utility-Scale Farms",
-  "Battery Storage",
-  "Civil & Groundworks",
-  "Electrical & Telecom",
-  "H&S Consultancy",
 ];
 
 export default function Footer() {
@@ -26,21 +12,13 @@ export default function Footer() {
 
   return (
     <footer className="relative overflow-hidden border-t border-ink/8 bg-ink text-snow">
-      {/* outlined wordmark marquee */}
-      <div className="border-b border-snow/8 py-6 opacity-80">
-        <Marquee
-          items={["SIMCO RENEWABLES", "SOLAR · STORAGE · GRID"]}
-          itemClassName="font-display outline-word text-[clamp(2.6rem,6vw,4.6rem)] font-extrabold uppercase leading-none"
-        />
-      </div>
-
       <div className="px-5 py-14 sm:px-8 lg:px-14 xl:px-20">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-12">
-          <div className="lg:col-span-4">
+          <div className="lg:col-span-5">
             <div className="flex items-center gap-3">
-              <LogoMark className="h-10 w-10" />
+              <img src={IMG.logo} alt="SIMCO logo" className="h-12 w-12 rounded-lg" />
               <span className="leading-none">
-                <span className="font-display block text-lg font-extrabold tracking-tight">SIMCO</span>
+                <span className="block text-xl font-extrabold tracking-tight">SIMCO</span>
                 <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-smoke">
                   Renewable Solutions
                 </span>
@@ -55,7 +33,7 @@ export default function Footer() {
             </p>
           </div>
 
-          <div className="lg:col-span-2 lg:col-start-6">
+          <div className="lg:col-span-2 lg:col-start-7">
             <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-smoke">Explore</p>
             <ul className="mt-5 space-y-2.5">
               {EXPLORE.map((l) => (
@@ -68,20 +46,7 @@ export default function Footer() {
             </ul>
           </div>
 
-          <div className="lg:col-span-3">
-            <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-smoke">Disciplines</p>
-            <ul className="mt-5 space-y-2.5">
-              {SERVICES_SHORT.map((s) => (
-                <li key={s}>
-                  <button onClick={() => go("capabilities")} className="link-sweep text-sm text-snow/85 hover:text-cyan-400">
-                    {s}
-                  </button>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          <div className="lg:col-span-3">
+          <div className="lg:col-span-4">
             <p className="font-mono text-[10px] uppercase tracking-[0.26em] text-smoke">Sales desk</p>
             <ul className="mt-5 space-y-2.5 text-sm">
               <li>
@@ -96,15 +61,6 @@ export default function Footer() {
               </li>
               <li className="text-smoke">{BRAND.city}</li>
             </ul>
-            <button
-              onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-              className="group mt-8 flex items-center gap-2 rounded-full border border-snow/15 px-4 py-2.5 font-mono text-[10px] uppercase tracking-[0.22em] text-snow transition-all duration-300 hover:border-cyan-500 hover:text-cyan-400"
-            >
-              Back to top
-              <svg viewBox="0 0 14 14" className="h-3 w-3 transition-transform duration-300 group-hover:-translate-y-0.5" fill="none">
-                <path d="M7 12V2M2.5 6.5 7 2l4.5 4.5" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
-              </svg>
-            </button>
           </div>
         </div>
 
@@ -112,7 +68,7 @@ export default function Footer() {
           <p>© 2026 {BRAND.legal} · Registered in England &amp; Wales</p>
           <p className="flex items-center gap-2">
             <span className="pulse-dot h-1.5 w-1.5 rounded-full bg-green-400" />
-            All systems operational — grid export nominal
+            All systems operational
           </p>
         </div>
       </div>

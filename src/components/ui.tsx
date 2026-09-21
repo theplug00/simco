@@ -95,18 +95,6 @@ export function ArrowUpRight({ className = "h-5 w-5" }: { className?: string }) 
   );
 }
 
-export function LogoMark({ className = "h-9 w-9" }: { className?: string }) {
-  return (
-    <svg viewBox="0 0 40 40" className={className} aria-hidden="true">
-      <rect x="1" y="1" width="38" height="38" rx="9" fill="#00d4d5" />
-      <circle cx="20" cy="20" r="7" fill="#0a0a0a" />
-      <g stroke="#0a0a0a" strokeWidth="2.4" strokeLinecap="round">
-        <path d="M20 5.5v4M20 30.5v4M5.5 20h4M30.5 20h4M9.7 9.7l2.9 2.9M27.4 27.4l2.9 2.9M30.3 9.7l-2.9 2.9M12.6 27.4l-2.9 2.9" />
-      </g>
-    </svg>
-  );
-}
-
 /* Infinite marquee band */
 export function Marquee({
   items,
@@ -132,35 +120,6 @@ export function Marquee({
         ))}
       </div>
     </div>
-  );
-}
-
-/* Inline SVG portrait used behind the opening headline */
-export function SunArc({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 600 600"
-      fill="none"
-      className={className}
-      aria-hidden="true"
-    >
-      <g stroke="rgba(0,212,213,0.25)">
-        <circle cx="300" cy="300" r="120" strokeDasharray="3 9" />
-        <circle cx="300" cy="300" r="190" strokeDasharray="2 12" opacity="0.7" />
-        <circle cx="300" cy="300" r="262" strokeDasharray="2 16" opacity="0.45" />
-      </g>
-      <circle cx="300" cy="300" r="52" fill="rgba(0,212,213,0.7)" />
-      <g stroke="#6bc46b" strokeWidth="2" strokeLinecap="round" opacity="0.8">
-        {Array.from({ length: 24 }).map((_, i) => {
-          const a = (i / 24) * Math.PI * 2;
-          const x1 = 300 + Math.cos(a) * 66;
-          const y1 = 300 + Math.sin(a) * 66;
-          const x2 = 300 + Math.cos(a) * 78;
-          const y2 = 300 + Math.sin(a) * 78;
-          return <line key={i} x1={x1} y1={y1} x2={x2} y2={y2} />;
-        })}
-      </g>
-    </svg>
   );
 }
 

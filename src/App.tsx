@@ -4,10 +4,6 @@ import Nav from "./components/Nav";
 import Opening from "./components/Opening";
 import Capabilities from "./components/Capabilities";
 import Projects from "./components/Projects";
-import Delivery from "./components/Delivery";
-import Estimator from "./components/Estimator";
-import Impact from "./components/Impact";
-import Insights from "./components/Insights";
 import Contact from "./components/Contact";
 import Footer from "./components/Footer";
 import ParallaxSection from "./components/ParallaxSection";
@@ -29,7 +25,7 @@ export default function App() {
   }, [phase]);
 
   return (
-    <div className="min-h-screen bg-charcoal-950">
+    <div className="min-h-screen bg-snow">
       {phase !== "done" && (
         <Preloader leaving={phase === "leaving"} onComplete={onComplete} />
       )}
@@ -45,22 +41,6 @@ export default function App() {
           height="h-[50vh]"
         />
         <Projects />
-        <ParallaxSection
-          image={IMG.wind}
-          title="From rooftop to grid-scale"
-          subtitle="We deliver across the full spectrum — domestic arrays, commercial rooftops, utility-scale solar farms and battery storage."
-          height="h-[50vh]"
-        />
-        <Delivery />
-        <Estimator />
-        <ParallaxSection
-          image={IMG.solarClose}
-          title="Every panel, every cable, every connection"
-          subtitle="Quality is non-negotiable. We build to last 30 years — because that's the commitment we make to our clients."
-          height="h-[50vh]"
-        />
-        <Impact />
-        <Insights />
         <Contact />
       </main>
       <Footer />

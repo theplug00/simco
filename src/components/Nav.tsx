@@ -1,15 +1,10 @@
 import { useEffect, useState } from "react";
 import { useActiveSection, useScrollY } from "../lib/hooks";
-import { BRAND } from "../lib/data";
-import { LogoMark } from "./ui";
+import { BRAND, IMG } from "../lib/data";
 
 const LINKS = [
   { id: "capabilities", label: "Capabilities" },
   { id: "projects", label: "Projects" },
-  { id: "delivery", label: "Delivery" },
-  { id: "estimator", label: "Estimator" },
-  { id: "impact", label: "Impact" },
-  { id: "insights", label: "Insights" },
   { id: "contact", label: "Contact" },
 ];
 
@@ -20,12 +15,6 @@ export default function Nav() {
   const active = useActiveSection(SECTION_IDS);
   const [open, setOpen] = useState(false);
   const scrolled = y > 28;
-
-  const scrollMax =
-    typeof document !== "undefined"
-      ? document.documentElement.scrollHeight - window.innerHeight
-      : 1;
-  const pct = Math.min((y / Math.max(scrollMax, 1)) * 100, 100);
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : "";
@@ -55,9 +44,9 @@ export default function Nav() {
             className="group flex items-center gap-3 text-left"
             aria-label="Back to top"
           >
-            <LogoMark className="h-9 w-9 transition-transform duration-500 group-hover:rotate-45" />
+            <img src={IMG.logo} alt="SIMCO logo" className="h-10 w-10 rounded-lg" />
             <span className="leading-none">
-              <span className="font-display block text-[17px] font-extrabold tracking-tight text-ink">
+              <span className="block text-[17px] font-extrabold tracking-tight text-ink">
                 SIMCO
               </span>
               <span className="mt-1 block font-mono text-[9px] uppercase tracking-[0.32em] text-ash">
@@ -114,10 +103,6 @@ export default function Nav() {
             </button>
           </div>
         </div>
-        <div
-          className="absolute bottom-[-2px] left-0 h-[2px] bg-cyan-500 transition-[width] duration-150 ease-out"
-          style={{ width: `${pct}%` }}
-        />
       </header>
 
       {/* Mobile overlay menu */}
@@ -139,7 +124,7 @@ export default function Nav() {
               <span className="font-mono text-[10px] tracking-[0.2em] text-cyan-500">
                 0{i + 1}
               </span>
-              <span className="font-display text-3xl font-bold text-ink transition-colors group-hover:text-cyan-600">
+              <span className="text-3xl font-bold text-ink transition-colors group-hover:text-cyan-600">
                 {l.label}
               </span>
             </button>

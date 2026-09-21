@@ -23,7 +23,7 @@
   --color-green-600: #4a9e4a;
 
   /* Stylish font combination */
-  --font-sans: "Inter", system-ui, -apple-system, sans-serif;
+  --font-display: "Archivo", "Helvetica Neue", sans-serif;
   --font-display: "Space Grotesk", system-ui, sans-serif;
   --font-body: "Inter", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;

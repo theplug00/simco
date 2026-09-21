@@ -25,7 +25,7 @@
   /* Stylish font combination */
   --font-display: "Archivo", "Helvetica Neue", sans-serif;
   --font-display: "Space Grotesk", system-ui, sans-serif;
-  --font-body: "Inter", system-ui, sans-serif;
+    --font-body: "Instrument Sans", "Helvetica Neue", sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
 }
 

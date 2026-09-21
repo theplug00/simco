@@ -69,7 +69,6 @@ export default function Opening() {
   const weather = {
     temp: 14,
     condition: "Partly Cloudy",
-    icon: "⛅",
   };
 
   useEffect(() => {
@@ -114,7 +113,11 @@ export default function Opening() {
           <div className="flex items-center gap-6">
             {/* Weather */}
             <div className="hidden items-center gap-3 rounded-full border border-snow/20 bg-snow/5 px-4 py-2 backdrop-blur-md sm:flex">
-              <span className="text-lg">{weather.icon}</span>
+              <svg className="h-5 w-5 text-cyan-400" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="8" cy="12" r="3.5" stroke="currentColor" strokeWidth="1.5"/>
+                <path d="M8 6V4M8 20V18M2 12H4M12 12H14M4.5 8.5L3 7M11.5 15.5L13 17M4.5 15.5L3 17M11.5 8.5L13 7" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round"/>
+                <path d="M15 14C15 14 15.5 13 17 13C18.5 13 19 14 19 14C19 14 20 14 20 15.5C20 17 19 17 19 17H15" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
               <div className="font-mono text-[10px] uppercase tracking-[0.2em] text-snow/80">
                 <span className="block text-snow">{weather.temp}°C</span>
                 <span className="text-[8px] text-snow/60">{weather.condition}</span>
